@@ -1,0 +1,70 @@
+/* Originally by @adi1090x on Github */
+
+@define-color background rgba(17, 3, 37, .5);
+@define-color foreground #EAD2AC;
+@define-color outline #EAF2EF;
+@define-color accent #CC5333;
+@define-color button rgba(0, 0, 0, 0.5);
+@define-color highlight rgba(128, 128, 128, 0.1);
+
+* {
+	background-image: none;
+	background:none;
+	border:none;
+	border-radius: 0;
+	font-family: Blex Mono Nerd Font;
+	font-weight: 200;
+}
+window {
+	background-color: @background;
+	margin:5em;
+}
+
+grid {
+	background-color: @background;
+	border: 1px solid @outline;
+	border-radius:10px;
+	padding:5em;
+}
+
+button {
+	margin: .25rem;
+	font-size:2.5em;
+	box-shadow: inset 0rem 0px rgba(0, 0, 0, 0);
+	transition: box-shadow .30s ease-in-out, background-color .30s ease-in-out;
+	background-color: @button;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20%;
+}
+
+button:focus, button:active, button:hover {
+	background-color: @highlight;
+	border: 1px solid @outline;
+	box-shadow: inset 0rem -0.2em @accent;
+}
+
+/** ********** Icons ********** **/
+#lock {
+    	background-image: image(url("icons/lock.png"), url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    	background-image: image(url("icons/logout.png"), url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    	background-image: image(url("icons/suspend.png"), url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    	background-image: image(url("icons/hibernate.png"), url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    	background-image: image(url("icons/shutdown.png"), url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    	background-image: image(url("icons/reboot.png"), url("/usr/share/wlogout/icons/reboot.png"));
+}
