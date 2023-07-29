@@ -1,26 +1,26 @@
 window {
     margin: 0px;
     border: 1px solid #EAD2AC;
-    background-color: #1F271B;
+    background-color: #110325;
 }
 
 #input {
     margin: 5px;
     border: none;
     color: #EAF2EF;
-    background-color: #131811;
+    background-color: #090213;
 }
 
 #inner-box {
     margin: 5px;
     border: none;
-    background-color: #1F271B;
+    background-color: #110325;
 }
 
 #outer-box {
     margin: 5px;
     border: none;
-    background-color: #1F271B;
+    background-color: #110325;
 }
 
 #scroll {
@@ -35,5 +35,5 @@ window {
 } 
 
 #entry:selected {
-    background-color: #303C2A;
+    background-color: #2B095D;
 }
