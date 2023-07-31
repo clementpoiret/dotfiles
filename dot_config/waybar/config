@@ -1,7 +1,225 @@
+[
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
+    "output": ["DVI-I-1"],
+    // "width": 2560, // Waybar width
+    "spacing": 15, // Gaps between modules (8px)
+    // "exclusive": false,
+
+    // Choose the order of the modules
+    "modules-left": [ 
+        "wlr/workspaces"
+    ],
+    "modules-center": [ 
+        "clock"
+     ],
+    "modules-right": [
+        "pulseaudio",
+        "battery",
+        "custom/power"
+    ],
+    
+    // Modules configuration
+    "wlr/workspaces": {
+        "format": "{icon} {name}",
+        "format-icons": {
+          "active": "",
+          "default": ""
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate"
+    },
+    "custom/weather" : {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 30,
+        "exec" : "~/.config/waybar/scripts/wttr.py",
+        "return-type" : "json"
+    },
+    "custom/updates": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "interval": 60,
+        "tooltip": true,
+        // "tooltip-format": "{}",
+        // "exec-tooltip": "~/.config/waybar/scripts/updates.sh tooltip"
+    },
+    "custom/notifications": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "~/.config/wlogout/launch.sh",
+    },
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 1,
+        "tooltip": true,
+        "exec": "playerctl metadata --format='{{ title }} | {{ artist }}'",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "max-length": 35
+    },
+    "custom/launcher": {
+        "format": "󰌧",
+        "on-click": "rofi -show drun",
+        "on-click-right": "rofi -show run"
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true,
+        "max-length": 35
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1"
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 15
+    },
+    "clock": {
+        "timezone": "Europe/Paris",
+        "format": "  {:%A, %B %d, %Y (%V) | %H:%M:%S}",
+        "format-alt": "  {:%a, %b %d, %Y | %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+        "on-click": "gnome-system-monitor",
+        "interval": 1
+    },
+    "disk": {
+        "format": "{used}/{total} ", 
+        "tooltip": true,
+        "on-click": "baobab",
+        "interval": 1
+    },
+    "memory": {
+        "format": "{}% ",
+        "tooltip": true,
+        "on-click": "gnome-system-monitor",
+        "interval": 1
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+        "critical-threshold": 40,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["" , "", ""],
+        "tooltip": true,
+        "on-click": "gnome-system-monitor",
+        "interval": 1
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""],
+        "on-scroll-up": "/home/cp264607/.config/hypr/scripts/tools/brightness_ctl.sh up",
+        "on-scroll-down": "/home/cp264607/.config/hypr/scripts/tools/brightness_ctl.sh down",
+        "interval": 1
+    },
+    "battery": {
+        "states": {
+            "good": 100,
+            "warning": 40,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󱐋",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "interval": 1
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀", 
+        "tooltip-format": "{ifname} via {gwaddr} 󰖟",
+        "format-linked": "{ifname} (No IP) 󰌷",
+        "format-disconnected": "Disconnected ⚠",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
+        "interval": 1
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": " ",
+            "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+},
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "output": "!DVI-I-1",
     // "width": 2560, // Waybar width
     "spacing": 15, // Gaps between modules (8px)
     // "exclusive": false,
@@ -224,3 +442,4 @@
         "on-click": "pavucontrol"
     },
 }
+]
