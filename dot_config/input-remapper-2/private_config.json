@@ -1,6 +1,6 @@
 {
     "version": "2.0.0",
     "autoload": {
-        "AT Translated Set 2 keyboard": "KP Delete to ."
+        "AT Translated Set 2 keyboard": "kp_delete_remap"
     }
 }
