@@ -119,26 +119,20 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/cp264607/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/usr/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/{{- .chezmoi.username -}}/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+    eval "$__mamba_setup"
 else
-    if [ -f "/home/cp264607/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/cp264607/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/cp264607/mambaforge/bin:$PATH"
-    fi
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
-unset __conda_setup
+unset __mamba_setup
+# <<< mamba initialize <<<
 
-if [ -f "/home/cp264607/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/cp264607/mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-export PATH=$PATH:/home/cp264607/bin
+export PATH=$PATH:/home/{{- .chezmoi.username -}}/bin
 
 # GitHub Copilot CLI
 eval "$(github-copilot-cli alias -- "$0")"
