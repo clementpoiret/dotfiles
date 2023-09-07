@@ -6,7 +6,7 @@ lvim.plugins = {
   { "JManch/sunset.nvim" },
 
   -- -- python
-  { "ChristianChiarulli/swenv.nvim" },
+  { "clementpoiret/swenv.nvim" },
   { "stevearc/dressing.nvim" },
   -- { "sillybun/vim-repl" },
   { "fisadev/vim-isort" },

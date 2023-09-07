@@ -45,7 +45,7 @@ env = MOZ_ENABLE_WAYLAND,1
 $term = kitty
 $browser = vivaldi-stable
 $editor = lvim
-$explorer = thunar
+$explorer = nnn -Hde
 $music = spotify
 $notepad = mousepad
 $launcher = wofi
@@ -260,7 +260,7 @@ custom {
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, RETURN, exec, $term
         bind = $mainMod, Q, killactive,
-        bind = $mainMod, N, exec, $explorer
+        bind = $mainMod, N, exec, kitty -e $explorer
         bind = $mainMod, V, togglefloating,
         bind = $mainMod, R, exec, wofi --show drun
         bind = $mainMod, P, pseudo, # dwindle
@@ -269,8 +269,9 @@ custom {
 	bind = $mainMod, G, fullscreen, 1
         # bind = $mainMod, G, fakefullscreen
         bind = $mainMod, W, exec, $browser
-        bind = $mainMod, C, exec, source ~/mambaforge/bin/activate && kitty -e $editor
-        bind = $mainMod, M, exec, $music
+        # bind = $mainMod, C, exec, eval "$(micromamba shell hook --shell zsh)"; micromamba activate; kitty -e $editor
+        bind = $mainMod, C, exec, zsh ~/.config/hypr/scripts/tools/lvim.sh
+	bind = $mainMod, M, exec, $music
         bind = $mainMod, INSERT, exec, ~/.config/hypr/scripts/tools/colorpicker
         bind = $mainMod, S, exec, ~/.config/wlogout/launch.sh
         bind = $mainMod, L, exec, ~/.config/hypr/scripts/tools/lock.sh
