@@ -10,7 +10,7 @@
 
     // Choose the order of the modules
     "modules-left": [ 
-        "wlr/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [ 
         "clock"
@@ -22,7 +22,7 @@
     ],
     
     // Modules configuration
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon} {name}",
         "format-icons": {
           "active": "",
@@ -226,11 +226,12 @@
 
     // Choose the order of the modules
     "modules-left": [ 
-        "wlr/workspaces", 
+        "hyprland/workspaces", 
         "cpu", 
         "memory", 
         "temperature", 
         "disk", 
+        "backlight",
         "custom/updates" 
     ],
     "modules-center": [ 
@@ -241,7 +242,6 @@
         "custom/weather", 
         "pulseaudio", 
         "network", 
-        "backlight", 
         "battery", 
         "tray", 
         "custom/notifications", 
@@ -249,7 +249,7 @@
     ],
     
     // Modules configuration
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon} {name}",
         "format-icons": {
           "active": "",
