@@ -7,6 +7,7 @@ lvim.plugins = {
 
   -- -- python
   { "clementpoiret/swenv.nvim" },
+  -- { "AckslD/swenv.nvim" },
   { "stevearc/dressing.nvim" },
   -- { "sillybun/vim-repl" },
   { "fisadev/vim-isort" },
@@ -32,4 +33,5 @@ lvim.plugins = {
   -- -- misc
   { "mfussenegger/nvim-jdtls" },
   { "folke/todo-comments.nvim" },
+  { "kelwin/vim-smali" },
 }
