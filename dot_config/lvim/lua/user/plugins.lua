@@ -29,6 +29,7 @@ lvim.plugins = {
   { "letorbi/vim-colors-borland" },
   { "srcery-colors/srcery-vim" },
   { "chriskempson/base16-vim" },
+  { "catppuccin/nvim" },
 
   -- -- misc
   { "mfussenegger/nvim-jdtls" },

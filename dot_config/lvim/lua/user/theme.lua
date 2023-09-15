@@ -6,12 +6,13 @@ local sunset = require("sunset")
 day_callback = function()
   -- set background to light
   -- vim.opt.background = "light"
-  lvim.colorscheme = "github_light_high_contrast"
+  -- lvim.colorscheme = "github_light_high_contrast"
+  lvim.colorscheme = "catppuccin-latte"
 end
 night_callback = function()
   -- set background to dark
   -- vim.opt.background = "dark"
-  lvim.colorscheme = "github_dark_high_contrast"
+  lvim.colorscheme = "catppuccin-mocha"
 end
 
 sunset.setup {
