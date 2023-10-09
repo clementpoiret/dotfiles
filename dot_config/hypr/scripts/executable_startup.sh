@@ -2,6 +2,9 @@
 # |        Applications          |
 # ================================
 
+# Power Notifications
+/sbin/powernotd &
+
 # Waybar
 ~/.config/waybar/launch.sh &
 

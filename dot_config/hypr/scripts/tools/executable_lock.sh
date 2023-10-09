@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # BLUR="5x4"
-BLUR="2x8"
+# BLUR="2x8"
 LOCKARGS=""
 IMAGES=""
 
@@ -17,6 +17,7 @@ for monitor in $MONITORS; do
 
     # corrupter "$IMAGE" "$IMAGE"
     convert "$IMAGE" -blur "$BLUR" "$IMAGE"
+    convert -scale 10% -blur 0x0.5 -resize 1000% "$IMAGE" "$IMAGE"
 
     LOCKARGS="${LOCKARGS} --image ${monitor}:${IMAGE}"
 
