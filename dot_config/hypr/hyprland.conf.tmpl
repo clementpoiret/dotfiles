@@ -11,17 +11,23 @@ OR EDIT THIS ONE ACCORDING TO THE WIKI INSTRUCTIONS.
 #
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor = eDP-1,	1920x1080@60, 1080x1080,	1				# Main
-# monitor = DVI-I-1,	1920x1080@60, 3000x0,		1,	transform,	1	# DisplayLink (right)
-monitor = DVI-I-1,	1920x1080@60, 0x0,		1,	transform,	1	# DisplayLink (left)
-monitor = DVI-I-2,	1920x1080@60, 0x0,		1,	transform,	1	# DisplayLink (left)
-monitor = DP-1,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
-monitor = DP-3,		1920x1080@60, 3000x1080,	1				# NS
-monitor = HDMI-A-1,	1920x1080@60, 3000x1080,	1				# NS
-monitor = DP-4,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
-monitor = DP-5,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
-#monitor=DVI-I-1,1920x1080@60,0x0,1
-#monitor=eDP-1,1920x1080@60,0x1080,1
+
+{{- if eq .computer "workstation" }}
+    monitor = DP-1,		1920x1080@60, 0x0,	1
+    monitor = HDMI-A-1,		1920x1080@60, 1920x0,	1
+{{- else }}
+    monitor = eDP-1,	1920x1080@60, 1080x1080,	1				# Main
+    # monitor = DVI-I-1,	1920x1080@60, 3000x0,		1,	transform,	1	# DisplayLink (right)
+    monitor = DVI-I-1,	1920x1080@60, 0x0,		1,	transform,	1	# DisplayLink (left)
+    monitor = DVI-I-2,	1920x1080@60, 0x0,		1,	transform,	1	# DisplayLink (left)
+    monitor = DP-1,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
+    monitor = DP-3,		1920x1080@60, 3000x1080,	1				# NS
+    monitor = HDMI-A-1,	1920x1080@60, 3000x1080,	1				# NS
+    monitor = DP-4,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
+    monitor = DP-5,		1920x1080@60, 0x0,		1,	transform,	3	# Station F
+    #monitor=DVI-I-1,1920x1080@60,0x0,1
+    #monitor=eDP-1,1920x1080@60,0x1080,1
+{{- end }}
 
 # Variables
 ## Wayland
@@ -66,7 +72,11 @@ env = XCURSOR_SIZE,24
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
-    kb_layout = fr
+    {{- if eq .computer "workstation" }}
+        kb_layout = us
+    {{- else }}
+        kb_layout = fr
+    {{- end }}
     kb_variant =
     kb_model =
     kb_options =
@@ -102,7 +112,7 @@ decoration {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
     rounding = 10
-    multisample_edges = true
+    # multisample_edges = true
 
     active_opacity = 1.0
     inactive_opacity = 0.8
@@ -279,7 +289,17 @@ custom {
 
         # Switch workspaces with mainMod + [0-9]
         # Switch workspaces
-        bind = $mainMod, ampersand, exec, ~/.config/hypr/scripts/tools/workspaces workspace 1
+        bind = $mainMod, 1, exec, ~/.config/hypr/scripts/tools/workspaces workspace 1
+        bind = $mainMod, 2, exec, ~/.config/hypr/scripts/tools/workspaces workspace 2
+        bind = $mainMod, 3, exec, ~/.config/hypr/scripts/tools/workspaces workspace 3
+        bind = $mainMod, 4, exec, ~/.config/hypr/scripts/tools/workspaces workspace 4
+        bind = $mainMod, 5, exec, ~/.config/hypr/scripts/tools/workspaces workspace 5
+        bind = $mainMod, 6, exec, ~/.config/hypr/scripts/tools/workspaces workspace 6
+        bind = $mainMod, 7, exec, ~/.config/hypr/scripts/tools/workspaces workspace 7
+        bind = $mainMod, 8, exec, ~/.config/hypr/scripts/tools/workspaces workspace 8
+        bind = $mainMod, 9, exec, ~/.config/hypr/scripts/tools/workspaces workspace 9
+
+	bind = $mainMod, ampersand, exec, ~/.config/hypr/scripts/tools/workspaces workspace 1
         bind = $mainMod, eacute, exec, ~/.config/hypr/scripts/tools/workspaces workspace 2
         bind = $mainMod, quotedbl, exec, ~/.config/hypr/scripts/tools/workspaces workspace 3
         bind = $mainMod, apostrophe, exec, ~/.config/hypr/scripts/tools/workspaces workspace 4
