@@ -74,12 +74,13 @@ env = XCURSOR_SIZE,24
 input {
     {{- if eq .computer "workstation" }}
         kb_layout = us
+        kb_options = compose:ralt
     {{- else }}
         kb_layout = fr
+	kb_options =
     {{- end }}
     kb_variant =
-    kb_model =
-    kb_options = compose:ralt
+    kb_model =    
     kb_rules =
 
     follow_mouse = 1
