@@ -79,7 +79,7 @@ input {
     {{- end }}
     kb_variant =
     kb_model =
-    kb_options =
+    kb_options = compose:ralt
     kb_rules =
 
     follow_mouse = 1
@@ -311,6 +311,16 @@ custom {
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
         # Move windows between workspaces
+        bind = SUPER_SHIFT, 1, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 1
+        bind = SUPER_SHIFT, 2, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 2
+        bind = SUPER_SHIFT, 3, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 3
+        bind = SUPER_SHIFT, 4, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 4
+        bind = SUPER_SHIFT, 5, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 5
+        bind = SUPER_SHIFT, 6, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 6
+        bind = SUPER_SHIFT, 7, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 7
+        bind = SUPER_SHIFT, 8, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 8
+        bind = SUPER_SHIFT, 9, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 9
+
         bind = SUPER_SHIFT, ampersand, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 1
         bind = SUPER_SHIFT, eacute, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 2
         bind = SUPER_SHIFT, quotedbl, exec, ~/.config/hypr/scripts/tools/workspaces movetoworkspace 3

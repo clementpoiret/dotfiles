@@ -2,6 +2,7 @@
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.renderer.icons.show.file = true
+vim.opt.relativenumber = true
 
 local todo = require("todo-comments")
 todo.setup {}
