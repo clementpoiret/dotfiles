@@ -1,11 +1,27 @@
 lvim.format_on_save.enabled = true
-lvim.format_on_save.pattern = { "*.py" }
+lvim.format_on_save.pattern = { "*.py", "*.ts", "*.tsx" }
 
 -- Formatting
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
     command = "prettier",
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescriptreact",
+      "typescript",
+      "css",
+      "scss",
+      "html",
+      "json",
+      "yaml",
+      "markdown",
+      "graphql",
+      "md",
+      "txt",
+    },
+    only_local = "node_modules/.bin"
   },
   {
     exe = "stylua",
