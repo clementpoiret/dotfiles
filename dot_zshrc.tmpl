@@ -134,11 +134,11 @@ unset __mamba_setup
 
 export PATH=$PATH:/home/{{- .chezmoi.username -}}/bin
 
-# GitHub Copilot CLI
-eval "$(github-copilot-cli alias -- "$0")"
-
 # Connectome Workbench
 #export PATH=$PATH:/opt/workbench/bin_linux64
+
+# GitHub Copilot CLI
+alias "??"="gh copilot suggest"
 
 # lvim
 export PATH=$PATH:~/.local/bin
