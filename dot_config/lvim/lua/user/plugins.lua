@@ -13,6 +13,9 @@ lvim.plugins = {
   { "fisadev/vim-isort" },
   { "heavenshell/vim-pydocstring" },
 
+  -- -- elm
+  { 'elmcast/elm-vim' },
+
   -- -- json
   { "XadillaX/json-formatter.vim" },
 

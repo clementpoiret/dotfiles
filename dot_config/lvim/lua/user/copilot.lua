@@ -14,4 +14,6 @@ vim.g.copilot_filetypes = {
   ["c++"] = true,
   ["go"] = true,
   ["python"] = true,
+  ["elm"] = true,
+  ["markdown"] = true,
 }

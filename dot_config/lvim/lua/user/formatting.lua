@@ -28,6 +28,10 @@ formatters.setup {
     filetypes = { "lua" },
   },
   {
+    exe = "elm-format",
+    filetypes = { "elm" }
+  },
+  {
     name = "yapf",
     filetypes = { "python" },
     -- set based_on_style "google"
