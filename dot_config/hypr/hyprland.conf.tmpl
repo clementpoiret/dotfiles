@@ -31,15 +31,17 @@ OR EDIT THIS ONE ACCORDING TO THE WIKI INSTRUCTIONS.
 
 # Variables
 ## Wayland
-#env = QT_QPA_PLATFORM,wayland
+env = QT_QPA_PLATFORM,wayland
+env = QT_AUTO_SCREEN_SCALE_FACTOR,1
 env = SDL_VIDEODRIVER,wayland
 env = CLUTTER_BACKEND,wayland
 env = XDG_SESSION_TYPE,wayland
 env = XDG_SESSION_DESKTOP,Hyprland
 env = XDG_CURRENT_DESKTOP,Hyprland
+env = MOZ_DISABLE_RDD_SANDBOX,1
 env = MOZ_WAYLAND,1
 env = MOZ_ENABLE_WAYLAND,1
-#env = GDK_BACKEND,wayland
+env = GDK_BACKEND,wayland,x11
 
 # Nvidia
 {{- if eq .gpu "nvidia" }}
@@ -47,6 +49,12 @@ env = MOZ_ENABLE_WAYLAND,1
     env = GBM_BACKEND,nvidia-drm
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     env = WLR_NO_HARDWARE_CURSORS,1
+    env = WLR_DRM_NO_ATOMIC,1
+    env = VDPAU_DRIVER,nvidia
+    env = NVD_BACKEND,direct
+    env = __GL_GSYNC_ALLOWED,1
+    env = __GL_VRR_ALLOWED,1
+    env = WLR_RENDERER_ALLOW_SOFTWARE,1
 {{- end }}
 
 # Applications
@@ -391,12 +399,13 @@ custom {
         # Floating Windows
         windowrule = float, *.exe
         windowrule = float, wofi
+        windowrulev2 = float, title:^(.*Sharing Indicator.*)$
 
         # Tiling Windows
         windowrule = tile,^(neovide)$
         windowrulev2 = tile, class:^(Spotify)$
-        windowrulev2 = tile, title:^(Minecraft.*)$
 	windowrulev2 = tile, class:^(Vivaldi-stable)$
+	windowrulev2 = tile, title:^(Minecraft.*)$
 
         # Window Opacity
         # windowrulev2 = opacity 0.5, class:^Code(\s+-\s+Insiders)?$
