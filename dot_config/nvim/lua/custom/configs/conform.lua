@@ -16,6 +16,7 @@ local options = {
     sh = { "shfmt" },
     elm = { "elm-format" },
     python = { "isort", "yapf" },
+    dart = { "dart_format" },
   },
 }
 
