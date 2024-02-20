@@ -151,3 +151,9 @@ alias tree='lsd -l --group-directories-first --tree --depth=2'
 
 # nnn plugins
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;d:dragdrop'
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
+
+# Zoxide
+eval "$(zoxide init zsh)"

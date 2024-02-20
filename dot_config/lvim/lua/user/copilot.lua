@@ -9,6 +9,7 @@ vim.g.copilot_filetypes = {
   ["typescriptreact"] = true,
   ["lua"] = true,
   ["rust"] = true,
+  ["dart"] = true,
   ["c"] = true,
   ["c#"] = true,
   ["c++"] = true,

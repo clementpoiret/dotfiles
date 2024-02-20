@@ -1,5 +1,5 @@
 lvim.format_on_save.enabled = true
-lvim.format_on_save.pattern = { "*.py", "*.ts", "*.tsx" }
+lvim.format_on_save.pattern = { "*.py", "*.ts", "*.tsx", "*.elm", "*.dart" }
 
 -- Formatting
 local formatters = require "lvim.lsp.null-ls.formatters"
