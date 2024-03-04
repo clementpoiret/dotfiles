@@ -10,6 +10,13 @@ local plugins = {
   --   "hrsh7th/nvim-cmp",
   --   opts = overrides.nvimcmp,
   -- },
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   config = function ()
+  --     require 'plugins.configs.lspconfig'
+  --     require 'custom.configs.lspconfig'
+  --   end,
+  -- },
 
   -- General
   {
@@ -22,10 +29,12 @@ local plugins = {
     'Exafunction/codeium.vim',
     event = 'BufEnter',
     config = function()
+      vim.g.codeium_disable_bindings = 1
       vim.keymap.set('i', '<C-a>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+      vim.keymap.set('i', '<C-ESC>', function() return vim.fn['codeium#Chat']() end, { expr = true, silent = true })
     end
   },
   -- {
@@ -35,17 +44,6 @@ local plugins = {
   --   config = function()
   --     require 'custom.configs.copilot'
   --   end,
-  -- },
-  -- {
-  --   "Exafunction/codeium.nvim",
-  --   dependencies = {
-  --       "nvim-lua/plenary.nvim",
-  --       "hrsh7th/nvim-cmp",
-  --   },
-  --   config = function()
-  --       require("codeium").setup({})
-  --   end,
-  --   lazy=false,
   -- },
   {
     "NvChad/nvcommunity",
@@ -58,13 +56,6 @@ local plugins = {
       require 'custom.configs.iron'
     end,
   },
-  -- {
-  --   'neovim/nvim-lspconfig',
-  --   config = function ()
-  --     require 'plugins.configs.lspconfig'
-  --     require 'custom.configs.lspconfig'
-  --   end,
-  -- },
 
   -- Python
   {
@@ -107,9 +98,17 @@ local plugins = {
   },
   {
     'folke/todo-comments.nvim',
+    -- PERF: test perf?  
+    -- HACK: bruh
+    -- TODO: wew
+    -- NOTE:  sdkfj dkfjskdfj 
+    -- FIX: fixed 
+    -- WARNING: test done
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require('todo-comments').setup {}
-    end
+      require("todo-comments").setup()
+    end,
   },
   {
     'kelwin/vim-smali'
