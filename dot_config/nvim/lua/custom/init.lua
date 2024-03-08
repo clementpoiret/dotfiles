@@ -1,5 +1,6 @@
 require 'custom.autocmds'
 
+-- General
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = '80'
 
