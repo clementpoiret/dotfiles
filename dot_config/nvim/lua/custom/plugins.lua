@@ -92,6 +92,21 @@ local plugins = {
     config = true,
   },
 
+  -- Obsidian
+  {
+    'epwalsh/obsidian.nvim',
+    lazy = true,
+    ft = 'markdown',
+    opts = {
+      workspaces = {
+        {
+          name = 'default',
+          path = "~/Sync/Notes/Obsidian/Default/",
+        }
+      },
+    },
+  },
+
   -- Misc
   {
     'mfussenegger/nvim-jdtls'
