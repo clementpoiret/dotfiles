@@ -1,0 +1,57 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# source antidote
+source ~/.antidote/antidote.zsh
+
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/usr/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/home/{{- .chezmoi.username -}}/micromamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# For binaries in home
+# this is if you have a chezmoi template
+# export PATH=$PATH:/home/{{- .chezmoi.username -}}/bin
+export PATH=$PATH:/home/clementpoiret/bin
+
+# GitHub Copilot CLI
+alias "??"="gh copilot suggest"
+
+# Create alias override commands using 'lsd'
+alias ls='lsd --group-directories-first'
+alias ll='lsd -l --group-directories-first'
+alias la='lsd -la --group-directories-first'
+alias tree='lsd -l --group-directories-first --tree --depth=2'
+
+# nnn plugins
+export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;d:dragdrop'
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
+
+# Zoxide
+eval "$(zoxide init zsh)"
+
+# Atuin
+eval "$(atuin init zsh)"
+
+# Pixi
+eval "$(pixi completion --shell zsh)"

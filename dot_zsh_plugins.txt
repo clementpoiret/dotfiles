@@ -1,0 +1,17 @@
+# theme
+romkatv/powerlevel10k
+
+# completions
+zsh-users/zsh-completions
+
+# zsh-utils
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:prompt
+belak/zsh-utils path:utility
+belak/zsh-utils path:completion
+
+# popular fish-like plugins
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search
