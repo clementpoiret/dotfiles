@@ -37,4 +37,14 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-require 'myinit'
+
+-- General
+vim.opt.relativenumber = true
+vim.opt.colorcolumn = '80'
+
+-- Obsidian
+vim.opt.conceallevel = 1
+
+-- Python
+vim.g.pydocstring_formatter = "google"
+vim.g.vim_isort_map = "C-i"

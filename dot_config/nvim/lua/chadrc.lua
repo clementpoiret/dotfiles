@@ -9,7 +9,5 @@ M.ui = {
     load_on_startup = true,
   }
 }
--- M.plugins = 'plugins'
--- M.mappings = require 'mappings'
 
 return M
