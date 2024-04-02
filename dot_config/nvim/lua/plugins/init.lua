@@ -34,6 +34,26 @@ return {
     "NvChad/nvcommunity",
     { import = "nvcommunity.git.lazygit" },
   },
+  { "rafamadriz/friendly-snippets" },
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
+  {
+    'pwntester/octo.nvim',
+    lazy = false,
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      -- OR 'ibhagwan/fzf-lua',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function ()
+      require"octo".setup()
+    end
+  },
+
+  -- Python
   {
     "Vigemus/iron.nvim",
     ft = "python",
@@ -41,8 +61,6 @@ return {
       require "configs.iron"
     end,
   },
-
-  -- Python
   {
     "AckslD/swenv.nvim",
   },

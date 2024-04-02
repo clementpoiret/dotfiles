@@ -54,3 +54,6 @@ vim.opt.conceallevel = 1
 -- Python
 vim.g.pydocstring_formatter = "google"
 vim.g.vim_isort_map = "C-i"
+
+-- Luasnip
+require("luasnip.loaders.from_vscode").lazy_load()
