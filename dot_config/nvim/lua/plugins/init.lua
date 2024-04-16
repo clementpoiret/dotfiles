@@ -132,6 +132,28 @@ return {
     "kelwin/vim-smali",
   },
 
+  -- Overrides
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "kdheepak/cmp-latex-symbols" },
+    opts = function()
+      local opts = require "nvchad.configs.cmp"
+      local cmp = require "cmp"
+
+      local symbols = {
+        name = "latex_symbols",
+        option = {
+          strategy = 0,
+        },
+      }
+
+      opts.mapping["<CR>"] = cmp.mapping.confirm { select = false }
+      table.insert(opts.sources, symbols)
+
+      return opts
+    end,
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",
