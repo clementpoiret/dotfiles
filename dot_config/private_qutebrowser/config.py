@@ -15,6 +15,7 @@ ALLOW_JAVASCRIPT_WEBSITES = (
     r"*://*.evanchen.cc/*",
     r"*://*.github.com/*",
     r"*://*.kagi.com/*",
+    r"*://*.linear.app/*",
     r"*://*.mit.edu/*",
     r"*://*.myaccount.google.com/*",
     r"*://*.notion.so/*",
@@ -23,6 +24,9 @@ ALLOW_JAVASCRIPT_WEBSITES = (
     r"*://*.overleaf.com/*",  # their documentation is admittedly not bad
     r"*://*.readthedocs.io/*",
     r"*://*.reddit.com/*",
+    r"*://*.redditinc.com/*",
+    r"*://*.scholar-inbox.com/*",
+    r"*://*.slack.com/*",
     r"*://*.stackexchange.com/*",
     r"*://*.stripe.com/*",
     r"*://*.usaco.org/*",
@@ -112,6 +116,8 @@ c.content.canvas_reading = False
 #   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 #   - never: Don't accept cookies at all.
 c.content.cookies.accept = 'no-3rdparty'
+config.set('content.cookies.accept', 'all', r"*://*.reddit.com/*")
+config.set('content.cookies.accept', 'all', r"*://*.redditinc.com/*")
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -229,6 +235,19 @@ config.set(
     'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}',
     'https://web.whatsapp.com/')
 
+config.set(
+    'content.headers.user_agent',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    r"*://*.proton.me/*")
+config.set(
+    'content.headers.user_agent',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    r"*://*.reddit.com/*")
+config.set(
+    'content.headers.user_agent',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    r"*://*.redditinc.com/*")
+
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
 # The underlying WebKit version (set to a fixed value   with
@@ -293,6 +312,8 @@ config.set('content.images', True, 'devtools://*')
 c.content.javascript.enabled = False
 for site in ALLOW_JAVASCRIPT_WEBSITES:
     config.set("content.javascript.enabled", True, site)
+
+config.set('content.javascript.clipboard', 'access-paste', r"*://*.proton.me/*")
 
 # Allow locally loaded documents to access remote URLs.
 # Type: Bool
@@ -374,7 +395,7 @@ c.url.yank_ignored_parameters = [
     'utm_content', 'utm_name'
 ]
 
-c.content.pdfjs = True
+c.content.pdfjs = False
 
 # Map keys to other keys, so that they are equivalent in all modes. When
 # the key used as dictionary-key is pressed, the binding for the key
